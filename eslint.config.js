@@ -3,6 +3,8 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import neostandard from 'neostandard'
+import eslintPluginPrettier from 'eslint-plugin-prettier';
+import configPrettier from 'eslint-config-prettier';
 
 export default [
   ...neostandard(),
@@ -21,6 +23,7 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      prettier: eslintPluginPrettier,
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -30,6 +33,13 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'prettier/prettier': [ // esta es la regla que hace el cambio de comillas
+        'warn',
+        {
+          singleQuote: true,
+        },
+      ]
     },
   },
-]
+  configPrettier,
+];
